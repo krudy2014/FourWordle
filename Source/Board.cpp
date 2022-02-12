@@ -1,4 +1,5 @@
 #include "Board.hpp"
+#include "Console.hpp"
 
 Board::Board() {
 	Reset();
@@ -15,13 +16,13 @@ void Board::SetNextGuess(std::string aGuess) {
 }
 
 void Board::Draw() {
-	system("CLS");
+	Console::Clear();
 	for (auto i = 0; i < MAX_ATTEMPTS; i++) {
 		mAllRows[i].Draw();
 	}
-	printf("\n");
+	Console::OutputBlankLine();
 	mKeyboard.Draw();
-	printf("\n");
+	Console::OutputBlankLine();
 }
 
 void Board::Reset() {

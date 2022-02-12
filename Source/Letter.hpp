@@ -1,10 +1,6 @@
 #pragma once
 #include "Base.hpp"
-
-#define WHITE (7)
-#define GREEN (2)
-#define YELLOW (6)
-#define RED (4)
+#include "Console.hpp"
 
 class Letter : Base{
 	public:

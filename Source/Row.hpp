@@ -1,8 +1,8 @@
 #pragma once
 #include <array>
 #include "Base.hpp"
-#include "Main.hpp"
 #include "Letter.hpp"
+#include "Main.hpp"
 
 class Row : Base {
 	public:

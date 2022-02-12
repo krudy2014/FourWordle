@@ -12,9 +12,9 @@ void Row::Reset() {
 void Row::Draw() {
 	for (auto i = 0; i < mWord.size(); i++ ) {
 		mWord[i].Draw();
-		printf(" ");
+		Console::OutputText(" ");
 	}
-	printf("\n");
+	Console::OutputBlankLine();
 }
 
 void Row::SetNextGuess(std::string aGuess) {

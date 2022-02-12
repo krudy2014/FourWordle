@@ -1,6 +1,6 @@
-#include "Dictionary.hpp"
-#include "Keyboard.hpp"
 #include <assert.h>
+#include "Console.hpp"
+#include "Keyboard.hpp"
 
 char KeyboardOrder[LETTERS_IN_ALPHABET] = {
 	'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
@@ -36,18 +36,18 @@ void Keyboard::Draw() {
 	for (auto i = 0; i < mLetters.size(); i++) {
 		if (i == 10 || i == 19) {
 			//Start a new row
-			printf("\n");
+			Console::OutputBlankLine();
 			row++;
 			if (row >= 1) {
-				printf(" ");
+				Console::OutputText(" ");
 			}
 			if (row >= 2) {
 				//Extra space for third row
-				printf(" ");
+				Console::OutputText(" ");
 			}
 		}
 		mLetters[i].Draw();
-		printf(" ");
+		Console::OutputText(" ");
 	}
 }
 

@@ -21,9 +21,8 @@ static int GetColor(Letter::State aState) {
 }
 
 void Letter::Draw() {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, mColor);
-	printf("%c", mLetter);
+	Console::SetColor(mColor);
+	Console::OutputText(mLetter);
 }
 
 void Letter::SetLetter(char aLetter, int aIndex) {
