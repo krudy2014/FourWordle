@@ -1288,11 +1288,16 @@ static const char* AllWords[] = {
 const char* sWord;
 bool sDictionaryInitialized = false;
 int letterIndices[LETTERS_IN_ALPHABET] = { 0 };
+int secretLetterCount[LETTERS_IN_ALPHABET] = { 0 };
 
 const char* GetSecretWord() {
 	return sWord;
 }
 
+//Assigns an index to letterIndices for where
+//each letter starts in the dictionary.
+//i.e., letterIndices[0] ~ letterIndices['A' - 'A'] = 0,
+//      letterIndices[1] ~ letterIndices['B' - 'A'] = 40, etc.
 void preprocessDictionary() {
 	char character = 'A';
 	int index = 0;
@@ -1309,12 +1314,22 @@ void preprocessDictionary() {
 	}
 }
 
+void preprocessWord() {
+	//This sets up a letter count array that can be used
+	//to determine how many of each letter exists in the word.
+	memset(&secretLetterCount, '0', sizeof(secretLetterCount));
+	for (auto i = 0; i < strlen(sWord); i++) {
+		secretLetterCount[sWord[i] - 'A']++;
+	}
+}
+
 namespace Dictionary {
 	void Initialize() {
 		srand(time(NULL));
 		const int MaxWords = sizeof(AllWords)/sizeof(char*);
 		int randIndex = rand() % MaxWords;
 		sWord = AllWords[randIndex];
+		preprocessWord();
 
 		if (!sDictionaryInitialized) {
 			preprocessDictionary();
@@ -1324,6 +1339,10 @@ namespace Dictionary {
 
 	const char* GetSecretWord() {
 		return sWord;
+	}
+
+	const int* GetSecretWordStats() {
+		return secretLetterCount;
 	}
 
 	bool InDictionary(std::string aString) {
@@ -1342,5 +1361,15 @@ namespace Dictionary {
 			index++;
 		}
 		return found;
+	}
+
+	bool InWord(const char* aWord, char aLetter) {
+		for (auto i = 0; i < strlen(aWord); i++) {
+			if (aWord[i] == aLetter) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

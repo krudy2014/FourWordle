@@ -1,5 +1,6 @@
 #include <assert.h>
 #include "Console.hpp"
+#include "Dictionary.hpp"
 #include "Keyboard.hpp"
 
 char KeyboardOrder[LETTERS_IN_ALPHABET] = {
@@ -11,7 +12,6 @@ char KeyboardOrder[LETTERS_IN_ALPHABET] = {
 Keyboard::Keyboard() {
 	for (auto i = 0; i < mLetters.size(); i++) {
 		mLetters[i].SetLetter(KeyboardOrder[i]);
-		mLetters[i].SetMode(Letter::UpdateMode::Auto);
 	}
 	//TODO: To improve getIndex(), create a hashmap
 	//mapping the letter to the correct index. This
@@ -52,9 +52,23 @@ void Keyboard::Draw() {
 }
 
 void Keyboard::SetNextGuess(std::string aGuess) {
+	const char* secretWord = Dictionary::GetSecretWord();
 	for (auto i = 0; i < aGuess.length(); i++) {
+		Letter::State newState = Letter::State::Incorrect;
+		if (secretWord[i] == aGuess[i]) {
+			newState = Letter::State::Correct;
+		}
+		else if (Dictionary::InWord(secretWord, aGuess[i])) {
+			newState = Letter::State::WrongSpot;
+		}
+
+		//If the state has already been set to "Correct",
+		//don't change it any more.
 		auto letterIndex = getIndex(aGuess[i]);
-		mLetters[letterIndex].SetNextGuess(aGuess);
+		if (mLetters[letterIndex].GetState() !=
+			Letter::State::Correct) {
+			mLetters[letterIndex].SetState(newState);
+		}
 	}
 }
 

@@ -33,11 +33,6 @@ InputStatus validateString(std::string& aString) {
 }
 
 int main() {
-	Console::Initialize();
-
-	Console::OutputText("Welcome to a rip off Wordle! %d letters and %d guesses.\n", MAX_LETTERS, MAX_ATTEMPTS);
-	Console::OutputText("Press enter to continue.\n");
-	Console::WaitForInput();
 	Board activeBoard;
 	std::string inputString;
 	bool playing = true;
@@ -45,6 +40,11 @@ int main() {
 	bool endCurrentGame = false;
 	bool reset = true;
 	InputStatus status = Valid;
+
+	Console::Initialize();
+	Console::OutputText("Welcome to a rip off Wordle! %d letters and %d guesses.\n", MAX_LETTERS, MAX_ATTEMPTS);
+	Console::OutputText("Press enter to continue.\n");
+	Console::WaitForInput();
 
 	while (playing) {
 		if (reset) {
@@ -109,7 +109,7 @@ int main() {
 
 				status = validateString(inputString);
 				if (Valid == status) {
-					//update the next word with the input string and secret word
+					//update the next word with the input string
 					activeBoard.SetNextGuess(inputString);
 				}
 

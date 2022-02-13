@@ -15,6 +15,8 @@ class Board : Base {
 		int GetActiveRow();
 
 	private:
+		//Vector used for mAllRows for future enhancement
+		//of being able to use variable length attempts on the fly
 		std::vector<Row> mAllRows;
 		Keyboard mKeyboard;
 		int mActiveRow = 0;
