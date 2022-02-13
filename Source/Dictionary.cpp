@@ -1317,7 +1317,7 @@ void preprocessDictionary() {
 void preprocessWord() {
 	//This sets up a letter count array that can be used
 	//to determine how many of each letter exists in the word.
-	memset(&secretLetterCount, '0', sizeof(secretLetterCount));
+	memset(&secretLetterCount, 0, sizeof(secretLetterCount));
 	for (auto i = 0; i < strlen(sWord); i++) {
 		secretLetterCount[sWord[i] - 'A']++;
 	}
