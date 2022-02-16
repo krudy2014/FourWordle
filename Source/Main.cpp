@@ -81,7 +81,6 @@ int main() {
 		}
 		else {
 			if (activeBoard.GetActiveRow() < MAX_ATTEMPTS) {
-				//Console::OutputText("Secret word: %s\n", Dictionary::GetSecretWord());
 				switch (status) {
 					case IncorrectLength:
 						Console::SetColor(RED);
@@ -109,7 +108,7 @@ int main() {
 
 				status = validateString(inputString);
 				if (Valid == status) {
-					//update the next word with the input string
+					//Update the next word with the input string
 					activeBoard.SetNextGuess(inputString);
 				}
 
