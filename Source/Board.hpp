@@ -1,3 +1,4 @@
+//Copyright 2022, Kelsey Rudy, All Rights Reserved
 #pragma once
 #include <vector>
 #include "Base.hpp"

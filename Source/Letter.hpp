@@ -1,3 +1,5 @@
+//Copyright 2022, Kelsey Rudy, All Rights Reserved
+
 #pragma once
 #include "Console.hpp"
 

@@ -1,3 +1,5 @@
+//Copyright 2022, Kelsey Rudy, All Rights Reserved
+
 #include <iostream>
 #include <stdio.h>
 #include <stdarg.h>

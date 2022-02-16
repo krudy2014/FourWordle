@@ -1,3 +1,5 @@
+//Copyright 2022, Kelsey Rudy, All Rights Reserved
+
 #include "Dictionary.hpp"
 #include "Main.hpp"
 #include <stdlib.h>
@@ -1291,6 +1293,7 @@ int letterIndices[LETTERS_IN_ALPHABET] = { 0 };
 int secretLetterCount[LETTERS_IN_ALPHABET] = { 0 };
 
 const char* GetSecretWord() {
+	//TODO validate that we initialized first
 	return sWord;
 }
 

@@ -1,3 +1,5 @@
+//Copyright 2022, Kelsey Rudy, All Rights Reserved
+
 #include <assert.h>
 #include "Console.hpp"
 #include "Dictionary.hpp"
